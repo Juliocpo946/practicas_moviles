@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'screens/dashboard_screen.dart';
+// import 'screens/dashboard_screen.dart'; // Vista anterior comentada
+import 'screens/responsive_card_screen.dart'; // Nueva vista importada
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const DashboardScreen(),
+      // home: const DashboardScreen(),
+      home: const ResponsiveCardScreen(),
     );
   }
 }
