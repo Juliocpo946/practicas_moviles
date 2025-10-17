@@ -13,17 +13,26 @@ class ResponsiveCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
-      widthFactor: 0.8,
+      widthFactor: 0.85,
       child: Card(
-        color: const Color(0xFF2A2A2A),
+        color: Colors.white,
+        elevation: 4,
+        clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-          side: const BorderSide(color: Color(0xFF3A3A3A)),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            FittedBox(
-              child: Image.network(imageUrl),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxHeight: 350,
+              ),
+              child: FittedBox(
+                fit: BoxFit.cover,
+                clipBehavior: Clip.hardEdge,
+                child: Image.network(imageUrl),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -31,9 +40,11 @@ class ResponsiveCard extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   title,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Color(0xFFB0B0B0),
-                    fontSize: 18,
+                    color: Colors.black87,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
