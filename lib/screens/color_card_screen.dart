@@ -26,7 +26,7 @@ class ColorCardScreen extends StatelessWidget {
       'On Error Container': colorScheme.onErrorContainer,
       'Surface': colorScheme.surface,
       'On Surface': colorScheme.onSurface,
-      'Surface Variant': colorScheme.surfaceVariant,
+      'Surface Variant': colorScheme.surfaceContainerHighest,
       'On Surface Variant': colorScheme.onSurfaceVariant,
       'Outline': colorScheme.outline,
     };
