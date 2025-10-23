@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'screens/responsive_card_screen.dart';
+import 'screens/color_card_screen.dart';
+import 'core/theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,28 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
-
       debugShowCheckedModeBanner: false,
-
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.light,
-        ),
-        useMaterial3: true,
-      ),
-
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
+      theme: MaterialTheme(Theme.of(context).textTheme).light(),
+      darkTheme: MaterialTheme(Theme.of(context).textTheme).dark(),
       themeMode: ThemeMode.system,
-
-      home: const ResponsiveCardScreen(),
+      home: const ColorCardScreen(),
     );
   }
 }
-
