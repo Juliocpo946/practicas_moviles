@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/color_card.dart';
+import '../widgets/app_navigation.dart';
 
 class ColorCardScreen extends StatelessWidget {
   const ColorCardScreen({super.key});
@@ -33,31 +34,38 @@ class ColorCardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Paleta de Colores del Tema'),
+        title: const Text('Paleta de Colores (Inicio)'),
         elevation: 2,
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          final crossAxisCount = (constraints.maxWidth / 200).floor().clamp(2, 6);
-          return GridView.builder(
-            padding: const EdgeInsets.all(16.0),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 16.0,
-              mainAxisSpacing: 16.0,
-              childAspectRatio: 3 / 2,
+      body: Column(
+        children: [
+          const AppNavigation(),
+          Expanded(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final crossAxisCount = (constraints.maxWidth / 200).floor().clamp(2, 6);
+                return GridView.builder(
+                  padding: const EdgeInsets.all(16.0),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    crossAxisSpacing: 16.0,
+                    mainAxisSpacing: 16.0,
+                    childAspectRatio: 3 / 2,
+                  ),
+                  itemCount: colors.length,
+                  itemBuilder: (context, index) {
+                    final colorName = colors.keys.elementAt(index);
+                    final color = colors.values.elementAt(index);
+                    return ColorCard(
+                      colorName: colorName,
+                      color: color,
+                    );
+                  },
+                );
+              },
             ),
-            itemCount: colors.length,
-            itemBuilder: (context, index) {
-              final colorName = colors.keys.elementAt(index);
-              final color = colors.values.elementAt(index);
-              return ColorCard(
-                colorName: colorName,
-                color: color,
-              );
-            },
-          );
-        },
+          ),
+        ],
       ),
     );
   }

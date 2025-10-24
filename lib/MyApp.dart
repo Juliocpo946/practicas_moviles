@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'screens/color_card_screen.dart';
-//import 'screens/typography_screen.dart';
+import 'core/route/app_router.dart';
+import 'core/route/app_routes.dart';
 import 'core/theme.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,14 +13,11 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      theme: MaterialTheme(
-          Theme.of(context).textTheme
-      ).light(),
-      darkTheme: MaterialTheme(
-          Theme.of(context).textTheme
-      ).dark(),
+      theme: MaterialTheme(Theme.of(context).textTheme).light(),
+      darkTheme: MaterialTheme(Theme.of(context).textTheme).dark(),
       themeMode: ThemeMode.system,
-      home: const ColorCardScreen(), //const TypographyScreen(),
+      initialRoute: AppRoutes.colors,
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }

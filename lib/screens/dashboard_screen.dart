@@ -9,6 +9,13 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1A1A1A),
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -92,12 +99,12 @@ class DashboardScreen extends StatelessWidget {
                         label: 'Botón 1',
                         onPressed: () {},
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       ActionButton(
                         label: 'Botón 2',
                         onPressed: () {},
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       ActionButton(
                         label: 'Botón 3',
                         onPressed: () {},

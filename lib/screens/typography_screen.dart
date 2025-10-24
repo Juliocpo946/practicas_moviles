@@ -28,6 +28,10 @@ class TypographyScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tipografías del Tema'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: ListView.builder(
         itemCount: typographyStyles.length,
